@@ -19,17 +19,23 @@
 
             <p>
                 <span class="text-muted">Document setId: {{ item.setid }}</span>
-                <span class="text-muted" ng-if="item.application_number !== undefined">
-                    Application Number: <span class="badge">{{ item.application_number }}</span>
+
+                <span class="text-muted">
+                    <span class="strong"> | </span>Application Number:
+
+                    <span class="badge" ng-if="item.application_number !== undefined">
+                        {{ item.application_number }}
+                    </span>
+                    <button class="btn btn-primary btn-xs" ng-click="getApplication(item)"
+                            ng-if="item.application_number === undefined">Load NDA
+                    </button>
                 </span>
             </p>
 
             <p>
                 <span class="text-capitalize">
                     <span>
-                        <button class="btn btn-primary btn-xs" ng-click="getApplication(item)"
-                                ng-if="item.application_number === undefined">Fetch Application Number
-                        </button>
+
 
                     </span>
 
