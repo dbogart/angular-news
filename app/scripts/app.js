@@ -38,6 +38,10 @@ app = angular
         templateUrl: 'views/sunset.html',
         controller: 'SunsetCtrl'
       })
+      .when('/insta', {
+        templateUrl: 'views/insta.html',
+        controller: 'InstaCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

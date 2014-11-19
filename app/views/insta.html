@@ -1,0 +1,15 @@
+<h3>San Diego</h3>
+
+<div class='row'>
+	<div class='col-md-6'>
+		<input ng-model="query" class='form-control' placeholder='Search spot'>
+	</div>
+</div>
+<br>
+<div class='row'>
+	<div class='col-md-12'>
+		<div ng-repeat="pic in pics" class="inline">
+			<a href="{{pic.link}}" target="_blank"><img ng-src="{{pic.images.thumbnail.url}}" /></a>
+		</div>
+	</div>
+</div>
