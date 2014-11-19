@@ -14,7 +14,7 @@ angular.module('angularNewsApp')
     .success(function(data){
     	console.log('data success');
     	console.log(data); // object seems fine
-    	$scope.weather = data
+    	$scope.weather = data;
     })
     .error(function(){
     	console.log('data error');

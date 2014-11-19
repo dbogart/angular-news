@@ -12,7 +12,8 @@
  * Main module of the application.
  */
 
-var app = angular
+var app;
+app = angular
   .module('angularNewsApp', [
     'ngAnimate',
     'ngCookies',
@@ -20,7 +21,8 @@ var app = angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'customFilter'
+    'customFilter',
+    'angularNewsApp.services'
   ])
   .config(function ($routeProvider) {
     $routeProvider

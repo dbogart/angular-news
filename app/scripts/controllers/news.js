@@ -8,16 +8,10 @@
  * Controller of the angularNewsApp
  */
 angular.module('angularNewsApp')
-  .controller('NewsCtrl', function ($scope, $http) {
+  .controller('NewsCtrl', function ($scope, NewsService) {
 
-  $http.get('http://api.feedzilla.com/v1/articles.json')
-    .success(function(data){
-    	console.log('data success');
-    	console.log(data); // object seems fine
-    	$scope.articles = data.articles;
-    })
-    .error(function(){
-    	console.log('data error');
+    NewsService.articles().success(function(data) {
+       	$scope.articles = data.articles;
+        console.log(data);
     });
-
 });
