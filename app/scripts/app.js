@@ -19,7 +19,8 @@ var app = angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'customFilter'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -30,6 +31,10 @@ var app = angular
       .when('/news', {
         templateUrl: 'views/news.html',
         controller: 'NewsCtrl'
+      })
+      .when('/sunset', {
+        templateUrl: 'views/sunset.html',
+        controller: 'SunsetCtrl'
       })
       .otherwise({
         redirectTo: '/'

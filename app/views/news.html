@@ -13,7 +13,13 @@
 	<div class='col-md-12'>
 		<div ng-repeat="article in articles | filter:query" >
 
-			<a href="{{ article.source_url }}">{{ article.title }}</a>
+			<div class='row'>
+				<p>
+					<a href="{{ article.url | url }}" class='col-md-9' target="_blank">{{ article.title }}</a>
+					<span class="btn btn-sm btn-default pull-right">{{ article.source }}</span>
+				</p>
+			</div>
+			<p>Posted {{ article.publish_date | date:'shortDate' }}</p>
 			<p>{{ article.summary }}</p>
 
 		</div>
