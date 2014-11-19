@@ -14,33 +14,32 @@
 
 angular.module('angularNewsApp.services', ['restangular'])
     .config(function (RestangularProvider) {
-        RestangularProvider.setBaseUrl('http://api.feedzilla.com/v1');
+        // set the base url for all requests
+        RestangularProvider.setBaseUrl('http://dailymed.nlm.nih.gov/dailymed/services/v2');
+
         // add a response intereceptor
         RestangularProvider.addResponseInterceptor(function (data, operation) {
-            var extractedData;
+            var extractedData, metadata;
             if (operation === "getList") {
-                extractedData = data.articles;
+                extractedData = data.data;
             } else {
-                extractedData = data;
+                extractedData = data.data;
             }
             return extractedData;
         });
 
     })
-    .service('NewsService', function (Restangular) {
-        var _service, getter;
-        _service = {};
-        getter = Restangular;
+    .service('SplService', function (Restangular) {
+        var exports;
+        exports = {};
 
-        _service.getCultures = function () {
-            return getter.all('cultures.json').getList();
+        exports.getLabels = function () {
+            return Restangular.all('spls.json').getList({marketing_category_code: 'C73594'});
         };
 
-        _service.getArticles = function () {
-            var articles = getter.all('articles.json').getList();
-            return articles;
+        exports.getApplicationByLabel = function (setid) {
+            return Restangular.all('applicationnumbers.json').getList({setid: setid});
         };
-
-        return _service;
+        return exports;
     });
 

@@ -11,10 +11,10 @@
 <br>
 <div class='row'>
 	<div class='col-md-12'>
-		<div ng-repeat="article in articles | filter:query" >
+		<div ng-repeat="item in items | filter:query" >
 
-			<a href="{{ article.source_url }}">{{ article.title }}</a>
-			<p>{{ article.summary }}</p>
+			<a href="{{ item.spl_id }}">{{ item.title }}</a>
+			<p>{{ item.published_date }}</p>
 
 		</div>
 	</div>

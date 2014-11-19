@@ -1,21 +1,40 @@
-<h3>This is the news view.<span class="text-muted"> (con Restangular)</span> </h3>
-
+<h3>This is the recently released Drug Label view.<span class="small text-muted"> (con Restangular)</span></h3>
+<div class="alert alert-warning">
+    <span>Last clicked id is {{ nda }}</span>
+</div>
 <div class='row'>
-	<div class='col-md-6'>
-		<input ng-model="query.title" class='form-control' placeholder='Search article titles'>
-	</div>
-	<div class='col-md-6'>
-		<input ng-model="query.summary" class='form-control' placeholder='Search content'>
-	</div>
+    <div class='col-md-6'>
+        <input ng-model="query.title" class='form-control' placeholder='Search article titles'>
+    </div>
+    <div class='col-md-6'>
+        <input ng-model="query.summary" class='form-control' placeholder='Search content'>
+    </div>
 </div>
 <br>
 <div class='row'>
-	<div class='col-md-12'>
-		<div ng-repeat="article in articles | filter:query" >
+    <div class='col-md-12'>
+        <div ng-repeat="item in items | filter:query">
 
-			<a href="{{ article.source_url }}">{{ article.title }}</a>
-			<p>{{ article.summary }}</p>
+            <span class="panel-title">{{ item.title | lowercase}} - {{ item.published_date }}</span>
 
-		</div>
-	</div>
+            <p>
+                <span class="text-muted">Document setId: {{ item.setid }}</span>
+                <span class="text-muted" ng-if="item.application_number !== undefined">
+                    Application Number: <span class="badge">{{ item.application_number }}</span>
+                </span>
+            </p>
+
+            <p>
+                <span class="text-capitalize">
+                    <span>
+                        <button class="btn btn-primary btn-xs" ng-click="getApplication(item)"
+                                ng-if="item.application_number === undefined">Fetch Application Number
+                        </button>
+
+                    </span>
+
+                </span>
+            </p>
+        </div>
+    </div>
 </div>
